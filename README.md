@@ -209,6 +209,14 @@ Config is stored at `~/.shelbtrace/config.json`:
 | `testnet` | Aptos testnet |
 | `local` | Local development |
 
+### Explorer
+
+Verify your blobs, transactions, and account activity on Shelbynet:
+
+**[explorer.shelby.xyz/testnet](https://explorer.shelby.xyz/testnet)**
+
+Paste your Shelby address to see uploaded blobs, on-chain commitments, and transaction history.
+
 ---
 
 ## Tech Stack
