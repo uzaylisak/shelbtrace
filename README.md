@@ -87,23 +87,21 @@ After running `npm run setup`, your browser opens at `http://localhost:7432`:
 
 ## Faucets & Funding
 
-You need two tokens on **Shelbynet**:
+You need **two tokens** on Shelbynet before shelbtrace can upload blobs. Both are free on the test network.
 
-### ShelbyUSD — for blob storage fees
-> Used to pay for uploading session blobs to Shelby
+### 1. APT — Aptos gas fees (required first)
 
-**Faucet:** [docs.shelby.xyz/apis/faucet/shelbyusd](https://docs.shelby.xyz/apis/faucet/shelbyusd)
+Every on-chain transaction requires a small amount of APT for gas. Without APT, blob registrations will fail even if you have ShelbyUSD.
 
-Paste your Shelby address, select **Shelbynet**, click Fund.
+**Faucet:** [docs.shelby.xyz/tools/wallets/petra-setup#apt-faucet](https://docs.shelby.xyz/tools/wallets/petra-setup#apt-faucet)
 
-### APT — for Aptos gas fees
-> Used for on-chain transaction gas (very small amounts needed)
+### 2. ShelbyUSD — blob storage fees (required)
 
-**Faucet:** [aptos.dev/en/network/faucet](https://aptos.dev/en/network/faucet)
+ShelbyUSD is the token used to pay for storing blobs on the Shelby network.
 
-Select **Testnet**, paste your address, click Fund.
+**Faucet:** [docs.shelby.xyz/tools/wallets/petra-setup#shelbyusd-faucet](https://docs.shelby.xyz/tools/wallets/petra-setup#shelbyusd-faucet)
 
-> **Note:** Your Shelby address is an Aptos address. Use the same address for both faucets.
+> **Important:** You need both APT **and** ShelbyUSD. APT covers the Aptos transaction fee, ShelbyUSD covers the Shelby storage fee. Fund APT first, then ShelbyUSD — both use the same Shelby address shown in the setup UI.
 
 ---
 
