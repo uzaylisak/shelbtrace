@@ -1,0 +1,36 @@
+{
+  "name": "shelbtrace",
+  "version": "0.1.0",
+  "description": "MCP server that records Hermes Agent actions and stores them as verifiable blobs on Shelby",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "shelbtrace": "dist/cli.js"
+  },
+  "files": ["dist", "README.md", ".env.example"],
+  "preferGlobal": true,
+  "scripts": {
+    "setup": "npm install && npm run build && node dist/cli.js --setup",
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js",
+    "lint": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@aptos-labs/ts-sdk": "^6.0.0",
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "@shelby-protocol/sdk": "^0.3.1",
+    "js-yaml": "^4.1.0",
+    "open": "^10.1.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.0.0",
+    "tsx": "^4.22.3",
+    "typescript": "^5.4.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
