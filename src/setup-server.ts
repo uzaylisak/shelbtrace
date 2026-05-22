@@ -20,19 +20,25 @@ function deriveAptosAddress(privateKeyHex: string): string {
 
 export async function runSetupServer(hermesStatus: HermesStatus): Promise<void> {
   return new Promise((resolve) => {
-    const server = createServer((req, res) => {
+    const server = createServer(async (req, res) => {
       const url = new URL(req.url ?? "/", `http://localhost:${PORT}`);
 
       // ── GET / ── show setup page ──────────────────────────────────────────
       if (req.method === "GET" && (url.pathname === "/" || url.pathname === "/setup")) {
-        const cfg     = loadPartialConfig();
-        const address = cfg.privateKey ? deriveAptosAddress(cfg.privateKey) : null;
+        // Auto-generate keypair if none exists
+        const cfg = loadPartialConfig();
+        if (!cfg.privateKey) {
+          const { generateAndSaveKeypair } = await import("./config.js");
+          generateAndSaveKeypair();
+        }
+        const freshCfg = loadPartialConfig();
+        const address  = freshCfg.privateKey ? deriveAptosAddress(freshCfg.privateKey) : null;
 
         res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
         res.end(renderSetupPage({
           hermes: hermesStatus,
           address,
-          currentConfig: { network: cfg.network, expiryDays: cfg.expiryDays },
+          currentConfig: { network: freshCfg.network, expiryDays: freshCfg.expiryDays },
         }));
         return;
       }
