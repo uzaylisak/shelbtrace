@@ -50,8 +50,8 @@ export function integrateHermes(shelbtraceBin: string): HermesStatus {
 
     servers["shelbtrace"] = {
       enabled: true,
-      command: shelbtraceBin,
-      args: [],
+      command: "node",
+      args: [shelbtraceBin],
     };
     config["mcp_servers"] = servers;
 
