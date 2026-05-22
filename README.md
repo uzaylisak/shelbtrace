@@ -6,6 +6,8 @@ shelbtrace is an MCP (Model Context Protocol) server that automatically records 
 
 Sessions are encrypted with AES-256-GCM. Public metadata (timestamp, tools used, action count) is readable by anyone. Private content (inputs, outputs, decisions) is only accessible to the key holder. Anyone can independently verify that a session is real and unmodified.
 
+**Dashboard:** [shelbtrace.vercel.app](https://shelbtrace.vercel.app)
+
 ---
 
 ## Why It Matters
@@ -140,13 +142,26 @@ Or add to your agent's MCP config:
 
 ## Marketplace
 
-The shelbtrace marketplace lets you:
+Browse, verify, and trade agent sessions at **[shelbtrace.vercel.app/market](https://shelbtrace.vercel.app/market)**:
 
 - Browse all published sessions (no wallet required)
 - Verify sessions on-chain — public metadata + action hash proofs
-- Connect MetaMask or Petra to buy sessions with ShelbyUSD
+- Connect Petra to buy sessions with ShelbyUSD
 - List your own sessions and set a price
 - Manage sales and purchase history
+
+---
+
+## Dashboard
+
+**[shelbtrace.vercel.app](https://shelbtrace.vercel.app)**
+
+| Page | URL | Description |
+|---|---|---|
+| Home | `/` | Landing page |
+| Marketplace | `/market` | Browse & buy sessions |
+| Verify | `/verify` | Verify any session on-chain |
+| Profile | `/profile` | Your sessions & listings |
 
 ---
 
@@ -203,7 +218,7 @@ Config is stored at `~/.shelbtrace/config.json`:
 
 Verify your blobs, transactions, and account activity on Shelbynet:
 
-**[explorer.shelby.xyz/testnet](https://explorer.shelby.xyz/testnet)**
+**[explorer.shelby.xyz](https://explorer.shelby.xyz)**
 
 Paste your Shelby address to see uploaded blobs, on-chain commitments, and transaction history.
 
@@ -216,7 +231,7 @@ Paste your Shelby address to see uploaded blobs, on-chain commitments, and trans
 | MCP server | TypeScript, Node.js, `@modelcontextprotocol/sdk` |
 | Storage | `@shelby-protocol/sdk` (Shelby decentralized storage) |
 | Blockchain | Aptos (`@aptos-labs/ts-sdk`), ShelbyUSD |
-| Dashboard | React 18, Vite, wagmi, `@aptos-labs/wallet-adapter-react` |
+| Dashboard | React 18, Vite — [shelbtrace.vercel.app](https://shelbtrace.vercel.app) |
 | Encryption | `@noble/curves` X25519, AES-256-GCM, HKDF-SHA256 |
 
 ---
