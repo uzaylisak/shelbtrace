@@ -45,6 +45,19 @@ export function integrateHermes(shelbtraceBin: string): HermesStatus {
     const servers = (config["mcp_servers"] ?? {}) as Record<string, unknown>;
 
     if ("shelbtrace" in servers) {
+      // Check if existing config has wrong format (command is the js file, not "node")
+      const existing = servers["shelbtrace"] as Record<string, unknown>;
+      const cmd = existing["command"] as string ?? "";
+      if (cmd.endsWith(".js") || cmd.endsWith("cli.js")) {
+        // Fix: update to correct node + args format
+        servers["shelbtrace"] = {
+          enabled: true,
+          command: "node",
+          args: [shelbtraceBin],
+        };
+        config["mcp_servers"] = servers;
+        writeFileSync(configPath, yaml.dump(config, { lineWidth: 120 }), "utf-8");
+      }
       return { installed, configPath, alreadyIntegrated: true, integrated: true, error: null };
     }
 
