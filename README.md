@@ -140,22 +140,13 @@ Or add to your agent's MCP config:
 
 ## Marketplace
 
-The dashboard at `app/` lets you:
+The shelbtrace marketplace lets you:
 
 - Browse all published sessions (no wallet required)
 - Verify sessions on-chain — public metadata + action hash proofs
 - Connect MetaMask or Petra to buy sessions with ShelbyUSD
 - List your own sessions and set a price
 - Manage sales and purchase history
-
-### Run the dashboard locally
-
-```bash
-cd app
-npm install
-npm run dev
-# → http://localhost:5173
-```
 
 ---
 
@@ -174,7 +165,6 @@ shelbtrace/
 │   ├── market-watcher.ts # Payment watcher + access grants
 │   ├── setup-server.ts   # localhost:7432 setup UI server
 │   └── types.ts          # Shared types
-├── app/                  # React dashboard (Vite)
 ├── test/                 # Smoke tests
 ├── package.json
 └── tsconfig.json
